@@ -1,19 +1,27 @@
+require './DuckProperties'
 class Duck
+  attr_accessor :name
 
-  def type
-    "Type of #{self.class}"
+  def initialize(name = nil)
+    @name = name
+  end
+
+  def name
+    return @name if @name
+    raise NotImplementedError, "'name' is not set"
   end
 
   def swim
-    "#{self.class} is swimming!"
+    return "'#{@name}' is swimming!" if @name
+    raise NotImplementedError, "'name' is not set"
   end
 
   def fly
-    raise NoMethodError, "Method Not Overriden"
+    raise NotImplementedError, "'FlyBehaviour' is not defined"
   end
 
   def quack
-    raise NoMethodError, "Method Not Overriden"
+    raise NotImplementedError, "'QuackBehaviour' is not defined"
   end
 
 end
