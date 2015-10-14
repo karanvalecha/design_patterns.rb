@@ -1,50 +1,40 @@
-module DuckProperties
-  def display
-    puts "Hi, I am a type of #{self.class}"
-  end
-
-  def swim
-    puts "#{self.class} is swimming!"
-  end
-
-  module FlyBehaviour
-    class NoFly
-      def initialize
-        puts "Can't fly"
-      end
-    end
-
-    class WithWings
-      def initialize
-        puts "I got wings"
-      end
-    end
-
-    class WithRocket
-      def initialize
-        puts "Yipee, I am on a rocket"
-      end
+module FlyBehaviour
+  module NoFly
+    def fly
+      "No Fly"
     end
   end
 
-  module QuackBehaviour
-    class Quack
-      def initialize
-        puts "Quack Quack!"
-      end
-    end
-
-    class Squeze
-      def initialize
-        puts "I am Squeezed!"
-      end
-    end
-
-    class Silence
-      def initialize
-        puts "< silence >"
-      end
+  module WithWings
+    def fly
+      "Fly With Wings"
     end
   end
 
+  module WithRocket
+    def fly
+      "Fly With Rocket"
+    end
+  end
 end
+
+module QuackBehaviour
+  module Quack
+    def quack
+      "Quack Quack!"
+    end
+  end
+
+  module Squeeze
+    def quack
+      "I am Squeezed!"
+    end
+  end
+
+  module Silence
+    def quack
+      "Silence!"
+    end
+  end
+end
+

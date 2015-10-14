@@ -1,34 +1,19 @@
-require 'colorize'
-require './DuckProperties.rb'
-
 class Duck
-  include DuckProperties
 
-  attr_accessor :fly_behaviour, :quack_behaviour
-
-  def initialize args=""
-    puts "I am a generic Duck"
+  def type
+    "Type of #{self.class}"
   end
 
-  def quack
-    @quack_behaviour || create_error("#{__method__}")
+  def swim
+    "#{self.class} is swimming!"
   end
 
   def fly
-    @fly_behaviour || create_error("#{__method__}")
+    raise NoMethodError, "Method Not Overriden"
   end
 
-  def setFly(type)
-    @fly_behaviour = self.class.const_get("FlyBehaviour::#{type}").new if FlyBehaviour.constants.include?(type)
+  def quack
+    raise NoMethodError, "Method Not Overriden"
   end
 
-  def setQuack(type)
-    @quack_behaviour = self.class.const_get("QuackBehaviour::#{type}").new if QuackBehaviour.constants.include?(type)
-  end
-
-private
-  def create_error(method)
-    raise NoMethodError,
-    "Did you set the '#{method}' property for '#{self.class}' class?".red
-  end
 end
